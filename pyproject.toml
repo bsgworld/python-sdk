@@ -1,6 +1,6 @@
 [project]
 name = "bsg-sdk"
-version = "0.0.1"
+version = "0.1.0"
 description = "BSG Python SDK for One-API"
 readme = "README.md"
 license = {text = "MIT"}
