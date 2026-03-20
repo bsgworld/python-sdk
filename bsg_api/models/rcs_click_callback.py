@@ -30,7 +30,7 @@ class RcsClickCallback(BaseModel):
     """ # noqa: E501
     id: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Message ID – a unique identifier automatically generated on the Platform when the message is created")
     reference: Optional[StrictStr] = Field(default=None, description="external unique ID. String up to 32 characters containing only alpha numeric characters.  **Please note:** messages with duplicate reference_id will be rejected")
-    msisdn: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=15)]] = Field(default=None, description="Phone number without leading plus, just digits")
+    msisdn: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=15)]] = Field(default=None, description="Phone number")
     text: Optional[StrictStr] = Field(default=None, description="Text on clicked button from suggestions")
     postback: Optional[StrictStr] = Field(default=None, description="postback_data field value from suggestion button object")
     time_click: Optional[datetime] = Field(default=None, description="Date when the item was created in the system ― set by the system automatically. Display format ― Y-m-d H:i:s")

@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **sms** | [**Sms**](Sms.md) |  | [optional]  |
+| **sms** | [**SmsAltChannel**](SmsAltChannel.md) |  | [optional]  |
 
 ## Example
 

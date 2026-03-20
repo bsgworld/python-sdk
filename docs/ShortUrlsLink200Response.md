@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**ShortUrlsLink200ResponseData**](ShortUrlsLink200ResponseData.md) |  | [optional]  |
+| **data** | [**ShortUrlsLinkStatisticData**](ShortUrlsLinkStatisticData.md) |  | [optional]  |
 
 ## Example
 

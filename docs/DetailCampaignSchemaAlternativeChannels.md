@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **sms** | [**DetailCampaignSchemaAlternativeChannelsOneOf0Sms**](DetailCampaignSchemaAlternativeChannelsOneOf0Sms.md) |  | [optional]  |
+| **sms** | [**DetailCampaignSchemaAlternativeChannelsStatistics**](DetailCampaignSchemaAlternativeChannelsStatistics.md) |  | [optional]  |
 
 ## Example
 

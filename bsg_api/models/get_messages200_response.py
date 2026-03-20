@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from bsg_api.models.get_messages200_response_meta import GetMessages200ResponseMeta
 from bsg_api.models.message_api_schema import MessageApiSchema
+from bsg_api.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class GetMessages200Response(BaseModel):
     GetMessages200Response
     """ # noqa: E501
     data: Optional[List[MessageApiSchema]] = None
-    meta: Optional[GetMessages200ResponseMeta] = None
+    meta: Optional[Meta] = None
     __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class GetMessages200Response(BaseModel):
 
         _obj = cls.model_validate({
             "data": [MessageApiSchema.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": GetMessages200ResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

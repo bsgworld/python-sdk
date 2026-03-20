@@ -1,6 +1,6 @@
 # Options
 
-The object contains information about the message content.      Either cards or text must be provided
+The object contains information about the message content.  Either cards or text must be provided
 
 ## Properties
 

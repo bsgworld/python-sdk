@@ -6,7 +6,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**List[ContactSchema]**](ContactSchema.md) | List of searched contacts | [optional]  |
-| **meta** | [**ContactsSearch200ResponseMeta**](ContactsSearch200ResponseMeta.md) |  | [optional]  |
+| **meta** | [**ContactsSearchMeta**](ContactsSearchMeta.md) |  | [optional]  |
 
 ## Example
 

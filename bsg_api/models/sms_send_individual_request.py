@@ -32,7 +32,8 @@ class SmsSendIndividualRequest(BaseModel):
     tariff_code: Optional[StrictInt] = Field(default=None, description="Tariff code null by default. Your can pass specified one if you have several. For more information please visit the [account prices](https://app.bsg.world/prices/sms)")
     validity: Optional[Annotated[int, Field(le=72, strict=True, ge=1)]] = Field(default=72, description="validity time in hours. The default is 72 hours. Integer from 1 to 72")
     start_at: Optional[Annotated[int, Field(le=72, strict=True, ge=1)]] = Field(default=72, description="validity time in hours. The default is 72 hours. Integer from 1 to 72")
-    __properties: ClassVar[List[str]] = ["messages", "tariff_code", "validity", "start_at"]
+    callback_url: Optional[Any] = Field(default=None, description="Link to get the delivery status of messages. If this parameter is specified in the method, it will take precedence over the value specified in the “Callback URL” field in the Personal Area.")
+    __properties: ClassVar[List[str]] = ["messages", "tariff_code", "validity", "start_at", "callback_url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +81,11 @@ class SmsSendIndividualRequest(BaseModel):
                 if _item_messages:
                     _items.append(_item_messages.to_dict())
             _dict['messages'] = _items
+        # set to None if callback_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.callback_url is None and "callback_url" in self.model_fields_set:
+            _dict['callback_url'] = None
+
         return _dict
 
     @classmethod
@@ -95,7 +101,8 @@ class SmsSendIndividualRequest(BaseModel):
             "messages": [IndividualMessageData.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "tariff_code": obj.get("tariff_code"),
             "validity": obj.get("validity") if obj.get("validity") is not None else 72,
-            "start_at": obj.get("start_at") if obj.get("start_at") is not None else 72
+            "start_at": obj.get("start_at") if obj.get("start_at") is not None else 72,
+            "callback_url": obj.get("callback_url")
         })
         return _obj
 

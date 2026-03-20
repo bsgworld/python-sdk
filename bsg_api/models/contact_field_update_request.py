@@ -19,31 +19,31 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from bsg_api.models.contact_field_update_request_option1 import ContactFieldUpdateRequestOption1
-from bsg_api.models.contact_field_update_request_option2 import ContactFieldUpdateRequestOption2
-from bsg_api.models.contact_field_update_request_option3 import ContactFieldUpdateRequestOption3
+from bsg_api.models.contact_field_update_request_option_description import ContactFieldUpdateRequestOptionDescription
+from bsg_api.models.contact_field_update_request_option_is_visible import ContactFieldUpdateRequestOptionIsVisible
+from bsg_api.models.contact_field_update_request_option_name import ContactFieldUpdateRequestOptionName
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-CONTACTFIELDUPDATEREQUEST_ANY_OF_SCHEMAS = ["ContactFieldUpdateRequestOption1", "ContactFieldUpdateRequestOption2", "ContactFieldUpdateRequestOption3"]
+CONTACTFIELDUPDATEREQUEST_ANY_OF_SCHEMAS = ["ContactFieldUpdateRequestOptionDescription", "ContactFieldUpdateRequestOptionIsVisible", "ContactFieldUpdateRequestOptionName"]
 
 class ContactFieldUpdateRequest(BaseModel):
     """
     ContactFieldUpdateRequest
     """
 
-    # data type: ContactFieldUpdateRequestOption1
-    anyof_schema_1_validator: Optional[ContactFieldUpdateRequestOption1] = None
-    # data type: ContactFieldUpdateRequestOption2
-    anyof_schema_2_validator: Optional[ContactFieldUpdateRequestOption2] = None
-    # data type: ContactFieldUpdateRequestOption3
-    anyof_schema_3_validator: Optional[ContactFieldUpdateRequestOption3] = None
+    # data type: ContactFieldUpdateRequestOptionName
+    anyof_schema_1_validator: Optional[ContactFieldUpdateRequestOptionName] = None
+    # data type: ContactFieldUpdateRequestOptionDescription
+    anyof_schema_2_validator: Optional[ContactFieldUpdateRequestOptionDescription] = None
+    # data type: ContactFieldUpdateRequestOptionIsVisible
+    anyof_schema_3_validator: Optional[ContactFieldUpdateRequestOptionIsVisible] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[ContactFieldUpdateRequestOption1, ContactFieldUpdateRequestOption2, ContactFieldUpdateRequestOption3]] = None
+        actual_instance: Optional[Union[ContactFieldUpdateRequestOptionDescription, ContactFieldUpdateRequestOptionIsVisible, ContactFieldUpdateRequestOptionName]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "ContactFieldUpdateRequestOption1", "ContactFieldUpdateRequestOption2", "ContactFieldUpdateRequestOption3" }
+    any_of_schemas: Set[str] = { "ContactFieldUpdateRequestOptionDescription", "ContactFieldUpdateRequestOptionIsVisible", "ContactFieldUpdateRequestOptionName" }
 
     model_config = {
         "validate_assignment": True,
@@ -64,27 +64,27 @@ class ContactFieldUpdateRequest(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = ContactFieldUpdateRequest.model_construct()
         error_messages = []
-        # validate data type: ContactFieldUpdateRequestOption1
-        if not isinstance(v, ContactFieldUpdateRequestOption1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOption1`")
+        # validate data type: ContactFieldUpdateRequestOptionName
+        if not isinstance(v, ContactFieldUpdateRequestOptionName):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOptionName`")
         else:
             return v
 
-        # validate data type: ContactFieldUpdateRequestOption2
-        if not isinstance(v, ContactFieldUpdateRequestOption2):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOption2`")
+        # validate data type: ContactFieldUpdateRequestOptionDescription
+        if not isinstance(v, ContactFieldUpdateRequestOptionDescription):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOptionDescription`")
         else:
             return v
 
-        # validate data type: ContactFieldUpdateRequestOption3
-        if not isinstance(v, ContactFieldUpdateRequestOption3):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOption3`")
+        # validate data type: ContactFieldUpdateRequestOptionIsVisible
+        if not isinstance(v, ContactFieldUpdateRequestOptionIsVisible):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ContactFieldUpdateRequestOptionIsVisible`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in ContactFieldUpdateRequest with anyOf schemas: ContactFieldUpdateRequestOption1, ContactFieldUpdateRequestOption2, ContactFieldUpdateRequestOption3. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in ContactFieldUpdateRequest with anyOf schemas: ContactFieldUpdateRequestOptionDescription, ContactFieldUpdateRequestOptionIsVisible, ContactFieldUpdateRequestOptionName. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -97,28 +97,28 @@ class ContactFieldUpdateRequest(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[ContactFieldUpdateRequestOption1] = None
+        # anyof_schema_1_validator: Optional[ContactFieldUpdateRequestOptionName] = None
         try:
-            instance.actual_instance = ContactFieldUpdateRequestOption1.from_json(json_str)
+            instance.actual_instance = ContactFieldUpdateRequestOptionName.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[ContactFieldUpdateRequestOption2] = None
+        # anyof_schema_2_validator: Optional[ContactFieldUpdateRequestOptionDescription] = None
         try:
-            instance.actual_instance = ContactFieldUpdateRequestOption2.from_json(json_str)
+            instance.actual_instance = ContactFieldUpdateRequestOptionDescription.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[ContactFieldUpdateRequestOption3] = None
+        # anyof_schema_3_validator: Optional[ContactFieldUpdateRequestOptionIsVisible] = None
         try:
-            instance.actual_instance = ContactFieldUpdateRequestOption3.from_json(json_str)
+            instance.actual_instance = ContactFieldUpdateRequestOptionIsVisible.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into ContactFieldUpdateRequest with anyOf schemas: ContactFieldUpdateRequestOption1, ContactFieldUpdateRequestOption2, ContactFieldUpdateRequestOption3. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into ContactFieldUpdateRequest with anyOf schemas: ContactFieldUpdateRequestOptionDescription, ContactFieldUpdateRequestOptionIsVisible, ContactFieldUpdateRequestOptionName. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -132,7 +132,7 @@ class ContactFieldUpdateRequest(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], ContactFieldUpdateRequestOption1, ContactFieldUpdateRequestOption2, ContactFieldUpdateRequestOption3]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], ContactFieldUpdateRequestOptionDescription, ContactFieldUpdateRequestOptionIsVisible, ContactFieldUpdateRequestOptionName]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

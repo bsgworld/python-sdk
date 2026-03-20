@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**OtpTemplateDelete200ResponseData**](OtpTemplateDelete200ResponseData.md) |  |  |
+| **data** | [**OtpTemplateDeleteResponseData**](OtpTemplateDeleteResponseData.md) |  |  |
 
 ## Example
 

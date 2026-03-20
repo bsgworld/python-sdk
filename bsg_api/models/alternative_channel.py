@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from bsg_api.models.sms import Sms
+from bsg_api.models.sms_alt_channel import SmsAltChannel
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class AlternativeChannel(BaseModel):
     """
     The object contains information for sending a message via an alternative SMS channel in case of non-delivery with primary channel
     """ # noqa: E501
-    sms: Optional[Sms] = None
+    sms: Optional[SmsAltChannel] = None
     __properties: ClassVar[List[str]] = ["sms"]
 
     model_config = ConfigDict(
@@ -84,7 +84,7 @@ class AlternativeChannel(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sms": Sms.from_dict(obj["sms"]) if obj.get("sms") is not None else None
+            "sms": SmsAltChannel.from_dict(obj["sms"]) if obj.get("sms") is not None else None
         })
         return _obj
 

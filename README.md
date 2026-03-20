@@ -112,14 +112,15 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**campaign**](docs/CampaignApi.md#campaign) | **GET** /api/campaigns/{id} | Get campaign info
 *CampaignApi* | [**campaign_details**](docs/CampaignApi.md#campaign_details) | **GET** /api/campaigns/{id}/detail | Get campaign details
 *CampaignApi* | [**campaign_price**](docs/CampaignApi.md#campaign_price) | **POST** /api/campaigns/price | Calculate campaign price
+*CampaignApi* | [**campaign_send**](docs/CampaignApi.md#campaign_send) | **POST** /api/campaigns/send | Send campaign
 *CampaignApi* | [**campaign_stop**](docs/CampaignApi.md#campaign_stop) | **PATCH** /api/campaigns/{id}/stop | Cancel campaign
 *CampaignApi* | [**campaigns**](docs/CampaignApi.md#campaigns) | **GET** /api/campaigns | List of campaigns
 *CampaignRCSApi* | [**rcs_send**](docs/CampaignRCSApi.md#rcs_send) | **POST** /api/campaigns/rcs/send | Send RCS message
 *CampaignRCSApi* | [**rcs_send_groups**](docs/CampaignRCSApi.md#rcs_send_groups) | **POST** /api/campaigns/rcs/send-groups | Send RCS message to contact list
-*CampaignRCSApi* | [**rcs_single**](docs/CampaignRCSApi.md#rcs_single) | **POST** /api/messages/rcs/send | Send single RCS message
 *CampaignSMSApi* | [**sms_send**](docs/CampaignSMSApi.md#sms_send) | **POST** /api/campaigns/sms/send | Send SMS campaign
 *CampaignSMSApi* | [**sms_send_groups**](docs/CampaignSMSApi.md#sms_send_groups) | **POST** /api/campaigns/sms/send-groups | Send SMS to contact list
 *CampaignSMSApi* | [**sms_send_individual**](docs/CampaignSMSApi.md#sms_send_individual) | **POST** /api/campaigns/sms/send-individual | Send SMS with different text
+*CampaignViberApi* | [**viber_send**](docs/CampaignViberApi.md#viber_send) | **POST** /api/campaigns/viber/send | Send Viber campaign
 *CampaignWhatsAppApi* | [**post_campaigns_whatsapp_send**](docs/CampaignWhatsAppApi.md#post_campaigns_whatsapp_send) | **POST** /api/campaigns/whatsapp/send | Send WhatsApp campaign
 *ContactApi* | [**contact**](docs/ContactApi.md#contact) | **GET** /api/contacts/{id} | Get contact by ID
 *ContactApi* | [**contact_create**](docs/ContactApi.md#contact_create) | **POST** /api/contacts | Create a contact
@@ -142,13 +143,8 @@ Class | Method | HTTP request | Description
 *ContactListApi* | [**contact_lists**](docs/ContactListApi.md#contact_lists) | **GET** /api/groups | List of contact lists
 *EmailApi* | [**email_send**](docs/EmailApi.md#email_send) | **POST** /api/email/send-emails | Send Email
 *EmailApi* | [**email_template_send**](docs/EmailApi.md#email_template_send) | **POST** /api/email/send-template-emails | Send Email template
-*InternalCorePriceApi* | [**get_internal_core_prices**](docs/InternalCorePriceApi.md#get_internal_core_prices) | **GET** /api/internal/core/prices | Get price list for each country
-*InternalCorePriceApi* | [**get_internal_core_prices_by_country_code**](docs/InternalCorePriceApi.md#get_internal_core_prices_by_country_code) | **GET** /api/internal/core/prices/{countryCode} | Get prices for country
-*InternalCountryApi* | [**get_internal_countries**](docs/InternalCountryApi.md#get_internal_countries) | **GET** /api/internal/countries | Get countries list
-*InternalCurrencyApi* | [**get_internal_currencies**](docs/InternalCurrencyApi.md#get_internal_currencies) | **GET** /api/internal/currencies | Get currencies list 
-*InternalTwoFAApi* | [**get_internal2fa_authentications_full_price**](docs/InternalTwoFAApi.md#get_internal2fa_authentications_full_price) | **GET** /api/internal/2fa/authentications/full-price | Show TwoFA authentication full price
-*InternalWstPriceApi* | [**get_internal_wst_prices**](docs/InternalWstPriceApi.md#get_internal_wst_prices) | **GET** /api/internal/wst/prices | Get price list for each country
-*InternalWstPriceApi* | [**get_internal_wst_prices_by_country_code**](docs/InternalWstPriceApi.md#get_internal_wst_prices_by_country_code) | **GET** /api/internal/wst/prices/{countryCode} | Get prices for country
+*MessageRCSApi* | [**rcs_single**](docs/MessageRCSApi.md#rcs_single) | **POST** /api/messages/rcs/send | Send single RCS message
+*MessagesApi* | [**send_message**](docs/MessagesApi.md#send_message) | **POST** /api/messages/send | Send single message
 *MessagesSMSApi* | [**get_messages**](docs/MessagesSMSApi.md#get_messages) | **GET** /api/messages | Find messages
 *MessagesWhatsAppApi* | [**whatsapp_single**](docs/MessagesWhatsAppApi.md#whatsapp_single) | **POST** /api/messages/whatsapp/send | Send single WhatsApp message
 *SendersApi* | [**sender_request_legal**](docs/SendersApi.md#sender_request_legal) | **POST** /api/senders/requests/legal | Sender registration by a legal entity
@@ -166,6 +162,10 @@ Class | Method | HTTP request | Description
 *ShortLinksApi* | [**short_urls_link_delete**](docs/ShortLinksApi.md#short_urls_link_delete) | **DELETE** /api/short-url/links/{uuid} | Remove short link
 *ShortLinksApi* | [**short_urls_link_update**](docs/ShortLinksApi.md#short_urls_link_update) | **PUT** /api/short-url/links/{uuid} | Update short link
 *ShortLinksApi* | [**short_urls_links**](docs/ShortLinksApi.md#short_urls_links) | **GET** /api/short-url/links | List of short links
+*StatisticApi* | [**stat_jobs_create**](docs/StatisticApi.md#stat_jobs_create) | **POST** /api/stat/jobs | Create new job
+*StatisticApi* | [**stat_jobs_delete**](docs/StatisticApi.md#stat_jobs_delete) | **DELETE** /api/stat/jobs/{id} | Delete job result
+*StatisticApi* | [**stat_jobs_list**](docs/StatisticApi.md#stat_jobs_list) | **GET** /api/stat/jobs | List statistic jobs
+*StatisticApi* | [**stat_jobs_show**](docs/StatisticApi.md#stat_jobs_show) | **GET** /api/stat/jobs/{id} | Load job result
 *StopListApi* | [**stoplist_add**](docs/StopListApi.md#stoplist_add) | **POST** /api/stoplist/attach | Add contacts to stop list
 *StopListApi* | [**stoplist_items**](docs/StopListApi.md#stoplist_items) | **GET** /api/stoplist | List the contacts of stop lists
 *StopListApi* | [**stoplist_remove**](docs/StopListApi.md#stoplist_remove) | **POST** /api/stoplist/detach | Remove contacts from stop list
@@ -180,6 +180,73 @@ Class | Method | HTTP request | Description
 *TwoFATemplatesApi* | [**otp_template_create**](docs/TwoFATemplatesApi.md#otp_template_create) | **POST** /api/2fa/authentications/templates | Create a message template
 *TwoFATemplatesApi* | [**otp_template_delete**](docs/TwoFATemplatesApi.md#otp_template_delete) | **DELETE** /api/2fa/authentications/templates/{templateId} | Delete a message template
 *TwoFATemplatesApi* | [**otp_template_list**](docs/TwoFATemplatesApi.md#otp_template_list) | **GET** /api/2fa/authentications/templates | List of message templates
+*AccountBalanceApi* | [**account_balance**](docs/AccountBalanceApi.md#account_balance) | **GET** /api/accounts/balance | Get balance
+*AccountTariffsApi* | [**account_tariffs**](docs/AccountTariffsApi.md#account_tariffs) | **GET** /api/accounts/tariff | Get tariffs
+*CampaignDetailsApi* | [**campaign_details**](docs/CampaignDetailsApi.md#campaign_details) | **GET** /api/campaigns/{id}/detail | Get campaign details
+*CampaignPriceApi* | [**campaign_price**](docs/CampaignPriceApi.md#campaign_price) | **POST** /api/campaigns/price | Calculate campaign price
+*CampaignStopApi* | [**campaign_stop**](docs/CampaignStopApi.md#campaign_stop) | **PATCH** /api/campaigns/{id}/stop | Cancel campaign
+*CampaignTagApi* | [**campaign**](docs/CampaignTagApi.md#campaign) | **GET** /api/campaigns/{id} | Get campaign info
+*CampaignsApi* | [**campaigns**](docs/CampaignsApi.md#campaigns) | **GET** /api/campaigns | List of campaigns
+*CancelOtpApi* | [**cancel_otp**](docs/CancelOtpApi.md#cancel_otp) | **POST** /api/2fa/authentications/{id}/cancel | Cancel the authentication session
+*ContactCreateApi* | [**contact_create**](docs/ContactCreateApi.md#contact_create) | **POST** /api/contacts | Create a contact
+*ContactDeleteApi* | [**contact_delete**](docs/ContactDeleteApi.md#contact_delete) | **DELETE** /api/contacts/{id} | Delete contact
+*ContactFieldCreateApi* | [**contact_field_create**](docs/ContactFieldCreateApi.md#contact_field_create) | **POST** /api/contacts/fields | Create contact field
+*ContactFieldUpdateApi* | [**contact_field_update**](docs/ContactFieldUpdateApi.md#contact_field_update) | **PATCH** /api/contacts/fields/{id} | Update contact field
+*ContactFieldsApi* | [**contact_fields**](docs/ContactFieldsApi.md#contact_fields) | **GET** /api/contacts/fields | List of contact fields
+*ContactListAttachApi* | [**contact_list_attach**](docs/ContactListAttachApi.md#contact_list_attach) | **POST** /api/groups/attach | Add contacts to the list
+*ContactListCreateApi* | [**contact_list_create**](docs/ContactListCreateApi.md#contact_list_create) | **POST** /api/groups | Create list
+*ContactListDeleteApi* | [**contact_list_delete**](docs/ContactListDeleteApi.md#contact_list_delete) | **DELETE** /api/groups/{id} | Delete list
+*ContactListDetachApi* | [**contact_list_detach**](docs/ContactListDetachApi.md#contact_list_detach) | **POST** /api/groups/detach | Remove contacts from the list
+*ContactListSearchApi* | [**contact_list_search**](docs/ContactListSearchApi.md#contact_list_search) | **GET** /api/groups/search | Search list
+*ContactListTagApi* | [**contact_list**](docs/ContactListTagApi.md#contact_list) | **GET** /api/groups/{id} | Get list by id
+*ContactListUpdateApi* | [**contact_list_update**](docs/ContactListUpdateApi.md#contact_list_update) | **PUT** /api/groups/{id} | Update list
+*ContactListsApi* | [**contact_lists**](docs/ContactListsApi.md#contact_lists) | **GET** /api/groups | List of contact lists
+*ContactTagApi* | [**contact**](docs/ContactTagApi.md#contact) | **GET** /api/contacts/{id} | Get contact by ID
+*ContactUpdateApi* | [**contact_update**](docs/ContactUpdateApi.md#contact_update) | **PUT** /api/contacts/{id} | Update contact
+*ContactsApi* | [**contacts**](docs/ContactsApi.md#contacts) | **GET** /api/contacts | List of contacts
+*ContactsDeleteApi* | [**contacts_delete**](docs/ContactsDeleteApi.md#contacts_delete) | **POST** /api/contacts/delete | Delete multiple contacts
+*ContactsSearchApi* | [**contacts_search**](docs/ContactsSearchApi.md#contacts_search) | **GET** /api/contacts/search | Search contacts
+*EmailSendApi* | [**email_send**](docs/EmailSendApi.md#email_send) | **POST** /api/email/send-emails | Send Email
+*EmailTemplateSendApi* | [**email_template_send**](docs/EmailTemplateSendApi.md#email_template_send) | **POST** /api/email/send-template-emails | Send Email template
+*GetMessagesApi* | [**get_messages**](docs/GetMessagesApi.md#get_messages) | **GET** /api/messages | Find messages
+*GetSettingsAddressBookFieldsByIdApi* | [**get_settings_address_book_fields_by_id**](docs/GetSettingsAddressBookFieldsByIdApi.md#get_settings_address_book_fields_by_id) | **GET** /api/settings/address-book-fields/{id} | Get settings value
+*LoginApi* | [**login**](docs/LoginApi.md#login) | **POST** /api/auth/login | Receive JWT token
+*OtpListApi* | [**otp_list**](docs/OtpListApi.md#otp_list) | **GET** /api/2fa/authentications | List of authentication sessions
+*OtpTemplateApi* | [**otp_template**](docs/OtpTemplateApi.md#otp_template) | **GET** /api/2fa/authentications/templates/{templateId} | Get message template
+*OtpTemplateCreateApi* | [**otp_template_create**](docs/OtpTemplateCreateApi.md#otp_template_create) | **POST** /api/2fa/authentications/templates | Create a message template
+*OtpTemplateDeleteApi* | [**otp_template_delete**](docs/OtpTemplateDeleteApi.md#otp_template_delete) | **DELETE** /api/2fa/authentications/templates/{templateId} | Delete a message template
+*OtpTemplateListApi* | [**otp_template_list**](docs/OtpTemplateListApi.md#otp_template_list) | **GET** /api/2fa/authentications/templates | List of message templates
+*PostCampaignsWhatsappSendApi* | [**post_campaigns_whatsapp_send**](docs/PostCampaignsWhatsappSendApi.md#post_campaigns_whatsapp_send) | **POST** /api/campaigns/whatsapp/send | Send WhatsApp campaign
+*PostContactsFieldsDeleteApi* | [**post_contacts_fields_delete**](docs/PostContactsFieldsDeleteApi.md#post_contacts_fields_delete) | **POST** /api/contacts/fields/delete | Delete contact fields by ids
+*RcsSendGroupsApi* | [**rcs_send**](docs/RcsSendGroupsApi.md#rcs_send) | **POST** /api/campaigns/rcs/send | Send RCS message
+*RcsSingleApi* | [**rcs_single**](docs/RcsSingleApi.md#rcs_single) | **POST** /api/messages/rcs/send | Send single RCS message
+*RefreshTokenApi* | [**refresh_token**](docs/RefreshTokenApi.md#refresh_token) | **POST** /api/auth/refresh | Refresh JWT token
+*ResendOtpApi* | [**resend_otp**](docs/ResendOtpApi.md#resend_otp) | **POST** /api/2fa/authentications/otp/{id}/resend | Resend the one-time code
+*SendOtpApi* | [**send_otp**](docs/SendOtpApi.md#send_otp) | **POST** /api/2fa/authentications/otp | Send One-time password
+*SenderRequestLegalApi* | [**sender_request_legal**](docs/SenderRequestLegalApi.md#sender_request_legal) | **POST** /api/senders/requests/legal | Sender registration by a legal entity
+*SenderRequestNaturalApi* | [**sender_request_natural**](docs/SenderRequestNaturalApi.md#sender_request_natural) | **POST** /api/senders/requests/natural | Sender registration by an individual
+*SenderRequestsApi* | [**sender_requests**](docs/SenderRequestsApi.md#sender_requests) | **GET** /api/senders/requests/sms | List of Sender Requests
+*SendersTagApi* | [**senders**](docs/SendersTagApi.md#senders) | **GET** /api/senders | List of Senders
+*ShortUrlsClicksApi* | [**short_urls_clicks**](docs/ShortUrlsClicksApi.md#short_urls_clicks) | **GET** /api/short-url/clicks | List of clicks
+*ShortUrlsDomainApi* | [**short_urls_domain**](docs/ShortUrlsDomainApi.md#short_urls_domain) | **GET** /api/short-url/domains/{uuid} | Get domain by uuid
+*ShortUrlsDomainCreateApi* | [**short_urls_domain_create**](docs/ShortUrlsDomainCreateApi.md#short_urls_domain_create) | **POST** /api/short-url/domains | Add domain
+*ShortUrlsDomainRemoveApi* | [**short_urls_domain_remove**](docs/ShortUrlsDomainRemoveApi.md#short_urls_domain_remove) | **DELETE** /api/short-url/domains/{uuid} | Remove domain
+*ShortUrlsDomainUpdateApi* | [**short_urls_domain_update**](docs/ShortUrlsDomainUpdateApi.md#short_urls_domain_update) | **PUT** /api/short-url/domains/{uuid} | Update domain
+*ShortUrlsDomainsApi* | [**short_urls_domains**](docs/ShortUrlsDomainsApi.md#short_urls_domains) | **GET** /api/short-url/domains | List of domains
+*ShortUrlsLinkApi* | [**short_urls_link**](docs/ShortUrlsLinkApi.md#short_urls_link) | **GET** /api/short-url/links/{uuid}/statistics | Get short link statistic
+*ShortUrlsLinkCreateApi* | [**short_urls_link_create**](docs/ShortUrlsLinkCreateApi.md#short_urls_link_create) | **POST** /api/short-url/links | Create short link
+*ShortUrlsLinkDeleteApi* | [**short_urls_link_delete**](docs/ShortUrlsLinkDeleteApi.md#short_urls_link_delete) | **DELETE** /api/short-url/links/{uuid} | Remove short link
+*ShortUrlsLinkUpdateApi* | [**short_urls_link_update**](docs/ShortUrlsLinkUpdateApi.md#short_urls_link_update) | **PUT** /api/short-url/links/{uuid} | Update short link
+*ShortUrlsLinksApi* | [**short_urls_links**](docs/ShortUrlsLinksApi.md#short_urls_links) | **GET** /api/short-url/links | List of short links
+*SmsSendApi* | [**sms_send**](docs/SmsSendApi.md#sms_send) | **POST** /api/campaigns/sms/send | Send SMS campaign
+*SmsSendGroupsApi* | [**sms_send_groups**](docs/SmsSendGroupsApi.md#sms_send_groups) | **POST** /api/campaigns/sms/send-groups | Send SMS to contact list
+*SmsSendIndividualApi* | [**sms_send_individual**](docs/SmsSendIndividualApi.md#sms_send_individual) | **POST** /api/campaigns/sms/send-individual | Send SMS with different text
+*StatusOtpApi* | [**status_otp**](docs/StatusOtpApi.md#status_otp) | **GET** /api/2fa/authentications/{id} | Check authentication status
+*StoplistAddApi* | [**stoplist_add**](docs/StoplistAddApi.md#stoplist_add) | **POST** /api/stoplist/attach | Add contacts to stop list
+*StoplistItemsApi* | [**stoplist_items**](docs/StoplistItemsApi.md#stoplist_items) | **GET** /api/stoplist | List the contacts of stop lists
+*StoplistRemoveApi* | [**stoplist_remove**](docs/StoplistRemoveApi.md#stoplist_remove) | **POST** /api/stoplist/detach | Remove contacts from stop list
+*StoplistSearchApi* | [**stoplist_search**](docs/StoplistSearchApi.md#stoplist_search) | **GET** /api/stoplist/search | Search contacts in Stop lists
+*VerifyOtpApi* | [**verify_otp**](docs/VerifyOtpApi.md#verify_otp) | **POST** /api/2fa/authentications/otp/{id}/verify | Check one-time Code
 
 
 ## Documentation For Models
@@ -188,12 +255,13 @@ Class | Method | HTTP request | Description
  - [AccountTariffs200Response](docs/AccountTariffs200Response.md)
  - [AlternativeChannel](docs/AlternativeChannel.md)
  - [BalanceSchema](docs/BalanceSchema.md)
- - [Campaign200Response](docs/Campaign200Response.md)
+ - [Campaign](docs/Campaign.md)
  - [CampaignDetails200Response](docs/CampaignDetails200Response.md)
  - [CampaignPrice200Response](docs/CampaignPrice200Response.md)
  - [CampaignPrice422Response](docs/CampaignPrice422Response.md)
  - [CampaignPriceRequest](docs/CampaignPriceRequest.md)
  - [CampaignPriceRequestMessagesItem](docs/CampaignPriceRequestMessagesItem.md)
+ - [CampaignResponse](docs/CampaignResponse.md)
  - [CampaignSchema](docs/CampaignSchema.md)
  - [CampaignStatus](docs/CampaignStatus.md)
  - [CampaignStop200Response](docs/CampaignStop200Response.md)
@@ -216,9 +284,9 @@ Class | Method | HTTP request | Description
  - [ContactFieldType](docs/ContactFieldType.md)
  - [ContactFieldUpdate200Response](docs/ContactFieldUpdate200Response.md)
  - [ContactFieldUpdateRequest](docs/ContactFieldUpdateRequest.md)
- - [ContactFieldUpdateRequestOption1](docs/ContactFieldUpdateRequestOption1.md)
- - [ContactFieldUpdateRequestOption2](docs/ContactFieldUpdateRequestOption2.md)
- - [ContactFieldUpdateRequestOption3](docs/ContactFieldUpdateRequestOption3.md)
+ - [ContactFieldUpdateRequestOptionDescription](docs/ContactFieldUpdateRequestOptionDescription.md)
+ - [ContactFieldUpdateRequestOptionIsVisible](docs/ContactFieldUpdateRequestOptionIsVisible.md)
+ - [ContactFieldUpdateRequestOptionName](docs/ContactFieldUpdateRequestOptionName.md)
  - [ContactFieldValuePair](docs/ContactFieldValuePair.md)
  - [ContactGroupSchema](docs/ContactGroupSchema.md)
  - [ContactGroupSearchField](docs/ContactGroupSearchField.md)
@@ -230,9 +298,8 @@ Class | Method | HTTP request | Description
  - [ContactListCreateRequest](docs/ContactListCreateRequest.md)
  - [ContactListDetachRequest](docs/ContactListDetachRequest.md)
  - [ContactListSearch200Response](docs/ContactListSearch200Response.md)
- - [ContactListSearch200ResponseMeta](docs/ContactListSearch200ResponseMeta.md)
- - [ContactListSearch200ResponseMetaPage](docs/ContactListSearch200ResponseMetaPage.md)
- - [ContactListSearch200ResponseMetaSearch](docs/ContactListSearch200ResponseMetaSearch.md)
+ - [ContactListSearchCriteria](docs/ContactListSearchCriteria.md)
+ - [ContactListSearchMeta](docs/ContactListSearchMeta.md)
  - [ContactListUpdate200Response](docs/ContactListUpdate200Response.md)
  - [ContactListUpdate422Response](docs/ContactListUpdate422Response.md)
  - [ContactListUpdateRequest](docs/ContactListUpdateRequest.md)
@@ -243,16 +310,17 @@ Class | Method | HTTP request | Description
  - [ContactUpdateRequest](docs/ContactUpdateRequest.md)
  - [Contacts200Response](docs/Contacts200Response.md)
  - [ContactsSearch200Response](docs/ContactsSearch200Response.md)
- - [ContactsSearch200ResponseMeta](docs/ContactsSearch200ResponseMeta.md)
- - [ContactsSearch200ResponseMetaPage](docs/ContactsSearch200ResponseMetaPage.md)
- - [ContactsSearch200ResponseMetaSearch](docs/ContactsSearch200ResponseMetaSearch.md)
+ - [ContactsSearchCriteria](docs/ContactsSearchCriteria.md)
+ - [ContactsSearchMeta](docs/ContactsSearchMeta.md)
  - [CorePriceSchema](docs/CorePriceSchema.md)
- - [CurrencyObj](docs/CurrencyObj.md)
- - [DateTimeParameter](docs/DateTimeParameter.md)
+ - [CountryItem](docs/CountryItem.md)
+ - [CreateJobMessage](docs/CreateJobMessage.md)
+ - [CreateJobParams](docs/CreateJobParams.md)
+ - [CurrencyItem](docs/CurrencyItem.md)
  - [DetailCampaignSchema](docs/DetailCampaignSchema.md)
  - [DetailCampaignSchemaAlternativeChannels](docs/DetailCampaignSchemaAlternativeChannels.md)
- - [DetailCampaignSchemaAlternativeChannelsOneOf0Sms](docs/DetailCampaignSchemaAlternativeChannelsOneOf0Sms.md)
- - [DetailCampaignSchemaAlternativeChannelsOption1](docs/DetailCampaignSchemaAlternativeChannelsOption1.md)
+ - [DetailCampaignSchemaAlternativeChannelsSms](docs/DetailCampaignSchemaAlternativeChannelsSms.md)
+ - [DetailCampaignSchemaAlternativeChannelsStatistics](docs/DetailCampaignSchemaAlternativeChannelsStatistics.md)
  - [DomainStoreRequest](docs/DomainStoreRequest.md)
  - [DomainUpdateRequest](docs/DomainUpdateRequest.md)
  - [EmailResponse](docs/EmailResponse.md)
@@ -260,14 +328,11 @@ Class | Method | HTTP request | Description
  - [GetInternalCorePrices200Response](docs/GetInternalCorePrices200Response.md)
  - [GetInternalCorePricesByCountryCode200Response](docs/GetInternalCorePricesByCountryCode200Response.md)
  - [GetInternalCountries200Response](docs/GetInternalCountries200Response.md)
- - [GetInternalCountries200ResponseDataItem](docs/GetInternalCountries200ResponseDataItem.md)
  - [GetInternalCurrencies200Response](docs/GetInternalCurrencies200Response.md)
- - [GetInternalCurrencies200ResponseDataItem](docs/GetInternalCurrencies200ResponseDataItem.md)
  - [GetInternalWstPrices200Response](docs/GetInternalWstPrices200Response.md)
  - [GetInternalWstPricesByCountryCode200Response](docs/GetInternalWstPricesByCountryCode200Response.md)
  - [GetMessages200Response](docs/GetMessages200Response.md)
- - [GetMessages200ResponseMeta](docs/GetMessages200ResponseMeta.md)
- - [GetMessages200ResponseMetaPage](docs/GetMessages200ResponseMetaPage.md)
+ - [GroupsTrait](docs/GroupsTrait.md)
  - [IndividualMessageData](docs/IndividualMessageData.md)
  - [Inline](docs/Inline.md)
  - [Language](docs/Language.md)
@@ -275,23 +340,26 @@ Class | Method | HTTP request | Description
  - [LinkUpdateRequest](docs/LinkUpdateRequest.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [Media](docs/Media.md)
- - [MediaObject](docs/MediaObject.md)
  - [MessageApiSchema](docs/MessageApiSchema.md)
  - [MessageApiSchemaAlternativeChannels](docs/MessageApiSchemaAlternativeChannels.md)
- - [MessageApiSchemaAlternativeChannelsOneOf0Sms](docs/MessageApiSchemaAlternativeChannelsOneOf0Sms.md)
- - [MessageApiSchemaAlternativeChannelsOneOf1Viber](docs/MessageApiSchemaAlternativeChannelsOneOf1Viber.md)
- - [MessageApiSchemaAlternativeChannelsOption1](docs/MessageApiSchemaAlternativeChannelsOption1.md)
- - [MessageApiSchemaAlternativeChannelsOption2](docs/MessageApiSchemaAlternativeChannelsOption2.md)
+ - [MessageApiSchemaAlternativeChannelsSms](docs/MessageApiSchemaAlternativeChannelsSms.md)
+ - [MessageApiSchemaAlternativeChannelsSmsDetails](docs/MessageApiSchemaAlternativeChannelsSmsDetails.md)
+ - [MessageApiSchemaAlternativeChannelsViber](docs/MessageApiSchemaAlternativeChannelsViber.md)
+ - [MessageApiSchemaAlternativeChannelsViberDetails](docs/MessageApiSchemaAlternativeChannelsViberDetails.md)
  - [MessageInfo](docs/MessageInfo.md)
  - [MessagePriceObject](docs/MessagePriceObject.md)
+ - [MessageResponse](docs/MessageResponse.md)
  - [MessageSource](docs/MessageSource.md)
  - [MessageStatus](docs/MessageStatus.md)
  - [MessageType](docs/MessageType.md)
+ - [MessageUniversal](docs/MessageUniversal.md)
+ - [Meta](docs/Meta.md)
+ - [MetaPage](docs/MetaPage.md)
  - [OperatorSchema](docs/OperatorSchema.md)
  - [Options](docs/Options.md)
  - [OtpChannel](docs/OtpChannel.md)
  - [OtpList200Response](docs/OtpList200Response.md)
- - [OtpList200ResponseData](docs/OtpList200ResponseData.md)
+ - [OtpListResponseData](docs/OtpListResponseData.md)
  - [OtpMessageStatus](docs/OtpMessageStatus.md)
  - [OtpStatus](docs/OtpStatus.md)
  - [OtpTemplate200Response](docs/OtpTemplate200Response.md)
@@ -300,27 +368,27 @@ Class | Method | HTTP request | Description
  - [OtpTemplateCreate422Response](docs/OtpTemplateCreate422Response.md)
  - [OtpTemplateCreateRequest](docs/OtpTemplateCreateRequest.md)
  - [OtpTemplateDelete200Response](docs/OtpTemplateDelete200Response.md)
- - [OtpTemplateDelete200ResponseData](docs/OtpTemplateDelete200ResponseData.md)
  - [OtpTemplateDelete404Response](docs/OtpTemplateDelete404Response.md)
  - [OtpTemplateDelete422Response](docs/OtpTemplateDelete422Response.md)
+ - [OtpTemplateDeleteResponseData](docs/OtpTemplateDeleteResponseData.md)
  - [OtpTemplateList200Response](docs/OtpTemplateList200Response.md)
- - [OtpTemplateList200ResponseData](docs/OtpTemplateList200ResponseData.md)
+ - [OtpTemplateListResponseData](docs/OtpTemplateListResponseData.md)
  - [OtpTemplateStatus](docs/OtpTemplateStatus.md)
  - [Parameter](docs/Parameter.md)
  - [Phone](docs/Phone.md)
+ - [PhonesTrait](docs/PhonesTrait.md)
  - [PostContactsFieldsDeleteRequest](docs/PostContactsFieldsDeleteRequest.md)
+ - [Rcs](docs/Rcs.md)
  - [RcsClickCallback](docs/RcsClickCallback.md)
  - [RcsMessage](docs/RcsMessage.md)
  - [RcsSend200Response](docs/RcsSend200Response.md)
  - [RcsSendGroups200Response](docs/RcsSendGroups200Response.md)
- - [RcsSingle200Response](docs/RcsSingle200Response.md)
  - [RcsStatusCallback](docs/RcsStatusCallback.md)
+ - [Recipients](docs/Recipients.md)
  - [ResendOtp200Response](docs/ResendOtp200Response.md)
  - [ResendOtp404Response](docs/ResendOtp404Response.md)
  - [ResendOtp422Response](docs/ResendOtp422Response.md)
  - [SearchCampaignResource](docs/SearchCampaignResource.md)
- - [SearchCampaignResourceMeta](docs/SearchCampaignResourceMeta.md)
- - [SearchCampaignResourceMetaPage](docs/SearchCampaignResourceMetaPage.md)
  - [SearchOperator](docs/SearchOperator.md)
  - [SendEmail](docs/SendEmail.md)
  - [SendOtp201Response](docs/SendOtp201Response.md)
@@ -330,6 +398,7 @@ Class | Method | HTTP request | Description
  - [SendRcsCampaignGroups](docs/SendRcsCampaignGroups.md)
  - [SendRcsCampaignGroupsAlternativeChannel](docs/SendRcsCampaignGroupsAlternativeChannel.md)
  - [SendTemplateEmail](docs/SendTemplateEmail.md)
+ - [SendViberCampaign](docs/SendViberCampaign.md)
  - [SendWhatsAppCampaign](docs/SendWhatsAppCampaign.md)
  - [SendWhatsAppCampaignAlternativeChannel](docs/SendWhatsAppCampaignAlternativeChannel.md)
  - [SenderRequestLegal201Response](docs/SenderRequestLegal201Response.md)
@@ -342,8 +411,6 @@ Class | Method | HTTP request | Description
  - [SenderRequestStatus](docs/SenderRequestStatus.md)
  - [SenderRequestType](docs/SenderRequestType.md)
  - [SenderRequests200Response](docs/SenderRequests200Response.md)
- - [SenderRequests200ResponseMeta](docs/SenderRequests200ResponseMeta.md)
- - [SenderRequests200ResponseMetaPage](docs/SenderRequests200ResponseMetaPage.md)
  - [SenderSchema](docs/SenderSchema.md)
  - [Senders200Response](docs/Senders200Response.md)
  - [ShortDomainNotFound](docs/ShortDomainNotFound.md)
@@ -360,20 +427,24 @@ Class | Method | HTTP request | Description
  - [ShortUrlsDomainUpdate200Response](docs/ShortUrlsDomainUpdate200Response.md)
  - [ShortUrlsDomains200Response](docs/ShortUrlsDomains200Response.md)
  - [ShortUrlsLink200Response](docs/ShortUrlsLink200Response.md)
- - [ShortUrlsLink200ResponseData](docs/ShortUrlsLink200ResponseData.md)
  - [ShortUrlsLink404Response](docs/ShortUrlsLink404Response.md)
  - [ShortUrlsLinkCreate201Response](docs/ShortUrlsLinkCreate201Response.md)
  - [ShortUrlsLinkDelete422Response](docs/ShortUrlsLinkDelete422Response.md)
+ - [ShortUrlsLinkStatisticData](docs/ShortUrlsLinkStatisticData.md)
  - [ShortUrlsLinkUpdate200Response](docs/ShortUrlsLinkUpdate200Response.md)
  - [ShortUrlsLinkUpdate422Response](docs/ShortUrlsLinkUpdate422Response.md)
  - [ShortUrlsLinks200Response](docs/ShortUrlsLinks200Response.md)
  - [Sms](docs/Sms.md)
+ - [SmsAltChannel](docs/SmsAltChannel.md)
  - [SmsCampaignResponse](docs/SmsCampaignResponse.md)
  - [SmsSendGroupsRequest](docs/SmsSendGroupsRequest.md)
  - [SmsSendIndividualRequest](docs/SmsSendIndividualRequest.md)
  - [SmsSendRequest](docs/SmsSendRequest.md)
  - [SmsSendRequestPhonesItem](docs/SmsSendRequestPhonesItem.md)
  - [SortWay](docs/SortWay.md)
+ - [StatJobsCreate200Response](docs/StatJobsCreate200Response.md)
+ - [StatJobsCreateRequest](docs/StatJobsCreateRequest.md)
+ - [StatJobsDelete200Response](docs/StatJobsDelete200Response.md)
  - [StatisticsData](docs/StatisticsData.md)
  - [StatisticsShort](docs/StatisticsShort.md)
  - [StatusOtp200Response](docs/StatusOtp200Response.md)
@@ -385,15 +456,15 @@ Class | Method | HTTP request | Description
  - [StoplistItems200Response](docs/StoplistItems200Response.md)
  - [StoplistRemoveRequest](docs/StoplistRemoveRequest.md)
  - [StoplistSearch200Response](docs/StoplistSearch200Response.md)
- - [StoplistSearch200ResponseMeta](docs/StoplistSearch200ResponseMeta.md)
- - [StoplistSearch200ResponseMetaPage](docs/StoplistSearch200ResponseMetaPage.md)
- - [StoplistSearch200ResponseMetaSearch](docs/StoplistSearch200ResponseMetaSearch.md)
+ - [StoplistSearchCriteria](docs/StoplistSearchCriteria.md)
  - [StoplistSearchField](docs/StoplistSearchField.md)
+ - [StoplistSearchMeta](docs/StoplistSearchMeta.md)
  - [StoreContact](docs/StoreContact.md)
  - [Suggestion](docs/Suggestion.md)
  - [SuggestionCall](docs/SuggestionCall.md)
  - [SuggestionLink](docs/SuggestionLink.md)
  - [TariffSchema](docs/TariffSchema.md)
+ - [Telegram](docs/Telegram.md)
  - [Template](docs/Template.md)
  - [Text](docs/Text.md)
  - [TokenSchema](docs/TokenSchema.md)
@@ -407,11 +478,11 @@ Class | Method | HTTP request | Description
  - [VerifyOtp422Response](docs/VerifyOtp422Response.md)
  - [VerifyOtpRequest](docs/VerifyOtpRequest.md)
  - [Viber](docs/Viber.md)
- - [ViberOptions](docs/ViberOptions.md)
+ - [ViberCampaignResponse](docs/ViberCampaignResponse.md)
+ - [Voice](docs/Voice.md)
  - [WhatsAppMessage](docs/WhatsAppMessage.md)
  - [WhatsAppMessageAlternativeChannel](docs/WhatsAppMessageAlternativeChannel.md)
  - [WhatsAppMessageTemplate](docs/WhatsAppMessageTemplate.md)
- - [WhatsappSingle200Response](docs/WhatsappSingle200Response.md)
  - [WstPriceSchema](docs/WstPriceSchema.md)
 
 

@@ -13,34 +13,39 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
 import json
 import pprint
+import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Any, List, Optional
-from bsg_api.models.message_api_schema_alternative_channels_option1 import MessageApiSchemaAlternativeChannelsOption1
-from bsg_api.models.message_api_schema_alternative_channels_option2 import MessageApiSchemaAlternativeChannelsOption2
-from pydantic import StrictStr, Field
-from typing import Union, List, Set, Optional, Dict
+from typing import Optional
+from bsg_api.models.message_api_schema_alternative_channels_sms import MessageApiSchemaAlternativeChannelsSms
+from bsg_api.models.message_api_schema_alternative_channels_viber import MessageApiSchemaAlternativeChannelsViber
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
+from pydantic import Field
 
-MESSAGEAPISCHEMAALTERNATIVECHANNELS_ONE_OF_SCHEMAS = ["MessageApiSchemaAlternativeChannelsOption1", "MessageApiSchemaAlternativeChannelsOption2"]
+MESSAGEAPISCHEMAALTERNATIVECHANNELS_ANY_OF_SCHEMAS = ["MessageApiSchemaAlternativeChannelsSms", "MessageApiSchemaAlternativeChannelsViber"]
 
 class MessageApiSchemaAlternativeChannels(BaseModel):
     """
     MessageApiSchemaAlternativeChannels
     """
-    # data type: MessageApiSchemaAlternativeChannelsOption1
-    oneof_schema_1_validator: Optional[MessageApiSchemaAlternativeChannelsOption1] = None
-    # data type: MessageApiSchemaAlternativeChannelsOption2
-    oneof_schema_2_validator: Optional[MessageApiSchemaAlternativeChannelsOption2] = None
-    actual_instance: Optional[Union[MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2]] = None
-    one_of_schemas: Set[str] = { "MessageApiSchemaAlternativeChannelsOption1", "MessageApiSchemaAlternativeChannelsOption2" }
 
-    model_config = ConfigDict(
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    # data type: MessageApiSchemaAlternativeChannelsSms
+    anyof_schema_1_validator: Optional[MessageApiSchemaAlternativeChannelsSms] = None
+    # data type: MessageApiSchemaAlternativeChannelsViber
+    anyof_schema_2_validator: Optional[MessageApiSchemaAlternativeChannelsViber] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[MessageApiSchemaAlternativeChannelsSms, MessageApiSchemaAlternativeChannelsViber]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "MessageApiSchemaAlternativeChannelsSms", "MessageApiSchemaAlternativeChannelsViber" }
 
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -53,65 +58,58 @@ class MessageApiSchemaAlternativeChannels(BaseModel):
             super().__init__(**kwargs)
 
     @field_validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
+    def actual_instance_must_validate_anyof(cls, v):
         if v is None:
             return v
 
         instance = MessageApiSchemaAlternativeChannels.model_construct()
         error_messages = []
-        match = 0
-        # validate data type: MessageApiSchemaAlternativeChannelsOption1
-        if not isinstance(v, MessageApiSchemaAlternativeChannelsOption1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `MessageApiSchemaAlternativeChannelsOption1`")
+        # validate data type: MessageApiSchemaAlternativeChannelsSms
+        if not isinstance(v, MessageApiSchemaAlternativeChannelsSms):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `MessageApiSchemaAlternativeChannelsSms`")
         else:
-            match += 1
-        # validate data type: MessageApiSchemaAlternativeChannelsOption2
-        if not isinstance(v, MessageApiSchemaAlternativeChannelsOption2):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `MessageApiSchemaAlternativeChannelsOption2`")
+            return v
+
+        # validate data type: MessageApiSchemaAlternativeChannelsViber
+        if not isinstance(v, MessageApiSchemaAlternativeChannelsViber):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `MessageApiSchemaAlternativeChannelsViber`")
         else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in MessageApiSchemaAlternativeChannels with oneOf schemas: MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2. Details: " + ", ".join(error_messages))
-        elif match == 0:
+            return v
+
+        if error_messages:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in MessageApiSchemaAlternativeChannels with oneOf schemas: MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in MessageApiSchemaAlternativeChannels with anyOf schemas: MessageApiSchemaAlternativeChannelsSms, MessageApiSchemaAlternativeChannelsViber. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: Optional[str]) -> Self:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         if json_str is None:
             return instance
 
         error_messages = []
-        match = 0
-
-        # deserialize data into MessageApiSchemaAlternativeChannelsOption1
+        # anyof_schema_1_validator: Optional[MessageApiSchemaAlternativeChannelsSms] = None
         try:
-            instance.actual_instance = MessageApiSchemaAlternativeChannelsOption1.from_json(json_str)
-            match += 1
+            instance.actual_instance = MessageApiSchemaAlternativeChannelsSms.from_json(json_str)
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into MessageApiSchemaAlternativeChannelsOption2
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[MessageApiSchemaAlternativeChannelsViber] = None
         try:
-            instance.actual_instance = MessageApiSchemaAlternativeChannelsOption2.from_json(json_str)
-            match += 1
+            instance.actual_instance = MessageApiSchemaAlternativeChannelsViber.from_json(json_str)
+            return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into MessageApiSchemaAlternativeChannels with oneOf schemas: MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2. Details: " + ", ".join(error_messages))
-        elif match == 0:
+        if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into MessageApiSchemaAlternativeChannels with oneOf schemas: MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into MessageApiSchemaAlternativeChannels with anyOf schemas: MessageApiSchemaAlternativeChannelsSms, MessageApiSchemaAlternativeChannelsViber. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -125,7 +123,7 @@ class MessageApiSchemaAlternativeChannels(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], MessageApiSchemaAlternativeChannelsOption1, MessageApiSchemaAlternativeChannelsOption2]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], MessageApiSchemaAlternativeChannelsSms, MessageApiSchemaAlternativeChannelsViber]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -133,7 +131,6 @@ class MessageApiSchemaAlternativeChannels(BaseModel):
         if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
             return self.actual_instance.to_dict()
         else:
-            # primitive type
             return self.actual_instance
 
     def to_str(self) -> str:

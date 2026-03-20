@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**List[GetInternalCountries200ResponseDataItem]**](GetInternalCountries200ResponseDataItem.md) |  |  |
+| **data** | [**List[CountryItem]**](CountryItem.md) |  |  |
 
 ## Example
 

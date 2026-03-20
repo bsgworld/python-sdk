@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**List[GetInternalCurrencies200ResponseDataItem]**](GetInternalCurrencies200ResponseDataItem.md) |  |  |
+| **data** | [**List[CurrencyItem]**](CurrencyItem.md) |  |  |
 
 ## Example
 

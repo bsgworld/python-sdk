@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from bsg_api.models.message_response import MessageResponse
 from bsg_api.models.whats_app_message import WhatsAppMessage
-from bsg_api.models.whatsapp_single200_response import WhatsappSingle200Response
 
 from bsg_api.api_client import ApiClient, RequestSerialized
 from bsg_api.api_response import ApiResponse
@@ -53,7 +53,7 @@ class MessagesWhatsAppApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> WhatsappSingle200Response:
+    ) -> MessageResponse:
         """Send single WhatsApp message
 
         This method allows you to send a single whatsapp message instantly. The message is sent without creating a campaign, provided that the client has enough funds on his/her balance. The ability to send messages via an alternative SMS channel is also supported
@@ -91,7 +91,7 @@ class MessagesWhatsAppApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "WhatsappSingle200Response",
+            '200': "MessageResponse",
             '429': "TooManyRequestsResponse",
         }
         response_data = self.api_client.call_api(
@@ -121,7 +121,7 @@ class MessagesWhatsAppApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[WhatsappSingle200Response]:
+    ) -> ApiResponse[MessageResponse]:
         """Send single WhatsApp message
 
         This method allows you to send a single whatsapp message instantly. The message is sent without creating a campaign, provided that the client has enough funds on his/her balance. The ability to send messages via an alternative SMS channel is also supported
@@ -159,7 +159,7 @@ class MessagesWhatsAppApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "WhatsappSingle200Response",
+            '200': "MessageResponse",
             '429': "TooManyRequestsResponse",
         }
         response_data = self.api_client.call_api(
@@ -227,7 +227,7 @@ class MessagesWhatsAppApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "WhatsappSingle200Response",
+            '200': "MessageResponse",
             '429': "TooManyRequestsResponse",
         }
         response_data = self.api_client.call_api(

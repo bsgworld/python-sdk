@@ -5,8 +5,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **sms** | [**MessageApiSchemaAlternativeChannelsOneOf0Sms**](MessageApiSchemaAlternativeChannelsOneOf0Sms.md) |  | [optional]  |
-| **viber** | [**MessageApiSchemaAlternativeChannelsOneOf1Viber**](MessageApiSchemaAlternativeChannelsOneOf1Viber.md) |  | [optional]  |
+| **sms** | [**MessageApiSchemaAlternativeChannelsSmsDetails**](MessageApiSchemaAlternativeChannelsSmsDetails.md) |  | [optional]  |
+| **viber** | [**MessageApiSchemaAlternativeChannelsViberDetails**](MessageApiSchemaAlternativeChannelsViberDetails.md) |  | [optional]  |
 
 ## Example
 

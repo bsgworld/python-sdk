@@ -6,7 +6,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**List[CampaignSchema]**](CampaignSchema.md) | list of campaigns | [optional]  |
-| **meta** | [**SearchCampaignResourceMeta**](SearchCampaignResourceMeta.md) |  | [optional]  |
+| **meta** | [**Meta**](Meta.md) |  | [optional]  |
 
 ## Example
 

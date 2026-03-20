@@ -6,7 +6,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**List[SenderRequestSchema]**](SenderRequestSchema.md) |  | [optional]  |
-| **meta** | [**SenderRequests200ResponseMeta**](SenderRequests200ResponseMeta.md) |  | [optional]  |
+| **meta** | [**Meta**](Meta.md) |  | [optional]  |
 
 ## Example
 

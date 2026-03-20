@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from bsg_api.models.meta import Meta
 from bsg_api.models.sender_request_schema import SenderRequestSchema
-from bsg_api.models.sender_requests200_response_meta import SenderRequests200ResponseMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class SenderRequests200Response(BaseModel):
     SenderRequests200Response
     """ # noqa: E501
     data: Optional[List[SenderRequestSchema]] = None
-    meta: Optional[SenderRequests200ResponseMeta] = None
+    meta: Optional[Meta] = None
     __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class SenderRequests200Response(BaseModel):
 
         _obj = cls.model_validate({
             "data": [SenderRequestSchema.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": SenderRequests200ResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

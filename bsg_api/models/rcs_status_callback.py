@@ -32,7 +32,7 @@ class RcsStatusCallback(BaseModel):
     error: Optional[StrictInt] = Field(default=None, description="error code, 0 - if successful")
     error_description: Optional[StrictStr] = Field(default=None, description="error description", alias="errorDescription")
     id: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Message ID – a unique identifier automatically generated on the Platform when the message is created")
-    msisdn: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=15)]] = Field(default=None, description="Phone number without leading plus, just digits")
+    msisdn: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=15)]] = Field(default=None, description="Phone number")
     reference: Optional[StrictStr] = Field(default=None, description="external unique ID. String up to 32 characters containing only alpha numeric characters.  **Please note:** messages with duplicate reference_id will be rejected")
     time_in: Optional[datetime] = Field(default=None, description="Date when the item was created in the system ― set by the system automatically. Display format ― Y-m-d H:i:s")
     time_sent: Optional[datetime] = Field(default=None, description="Date and time of sending the message")

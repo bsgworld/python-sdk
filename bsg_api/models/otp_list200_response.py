@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from bsg_api.models.otp_list200_response_data import OtpList200ResponseData
+from bsg_api.models.otp_list_response_data import OtpListResponseData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class OtpList200Response(BaseModel):
     """
     OtpList200Response
     """ # noqa: E501
-    data: OtpList200ResponseData
+    data: OtpListResponseData
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
@@ -84,7 +84,7 @@ class OtpList200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": OtpList200ResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": OtpListResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

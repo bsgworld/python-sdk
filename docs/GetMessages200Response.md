@@ -6,7 +6,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**List[MessageApiSchema]**](MessageApiSchema.md) |  | [optional]  |
-| **meta** | [**GetMessages200ResponseMeta**](GetMessages200ResponseMeta.md) |  | [optional]  |
+| **meta** | [**Meta**](Meta.md) |  | [optional]  |
 
 ## Example
 

@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from bsg_api.models.get_internal_countries200_response_data_item import GetInternalCountries200ResponseDataItem
+from bsg_api.models.country_item import CountryItem
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class GetInternalCountries200Response(BaseModel):
     """
     GetInternalCountries200Response
     """ # noqa: E501
-    data: List[GetInternalCountries200ResponseDataItem]
+    data: List[CountryItem]
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
@@ -88,7 +88,7 @@ class GetInternalCountries200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": [GetInternalCountries200ResponseDataItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": [CountryItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

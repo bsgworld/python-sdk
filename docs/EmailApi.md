@@ -48,7 +48,7 @@ configuration = bsg_api.Configuration(
 with bsg_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bsg_api.EmailApi(api_client)
-    send_email = {"to":["user@test.com"],"from":"Test.email 11_22 <user@test1.email.bsg.world>","subject":"test1","htmlbody":"<html><head><title>link to Symbl.cc</title></head><body><h1>Visit site</h1>Visit site <a href=\"https://symbl.cc\">Symbl.cc</a> for additional information.</body></html>"} # SendEmail | 
+    send_email = {"to":["user@test.com"],"from":"Test.email 11_22 <user@test1.email.bsg.world>","subject":"test1","htmlbody":"<html lang=\"en\"><head><title>link to Symbl.cc</title></head><body><h1>Visit site</h1>Visit site <a href=\"https://symbl.cc\">Symbl.cc</a> for additional information.</body></html>"} # SendEmail | 
 
     try:
         # Send Email

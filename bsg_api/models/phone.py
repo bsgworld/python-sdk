@@ -27,7 +27,7 @@ class Phone(BaseModel):
     """
     Phone
     """ # noqa: E501
-    number: Annotated[str, Field(min_length=9, strict=True, max_length=15)] = Field(description="Phone number without leading plus, just digits")
+    number: Annotated[str, Field(min_length=9, strict=True, max_length=15)] = Field(description="Phone number")
     reference_id: Optional[StrictStr] = Field(default=None, description="external unique ID. String up to 32 characters containing only alpha numeric characters.  **Please note:** messages with duplicate reference_id will be rejected")
     __properties: ClassVar[List[str]] = ["number", "reference_id"]
 

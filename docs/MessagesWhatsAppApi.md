@@ -8,7 +8,7 @@ All URIs are relative to *https://one-api.bsg.world*
 
 
 # **whatsapp_single**
-> WhatsappSingle200Response whatsapp_single(whats_app_message)
+> MessageResponse whatsapp_single(whats_app_message)
 
 Send single WhatsApp message
 
@@ -20,8 +20,8 @@ This method allows you to send a single whatsapp message instantly. The message 
 
 ```python
 import bsg_api
+from bsg_api.models.message_response import MessageResponse
 from bsg_api.models.whats_app_message import WhatsAppMessage
-from bsg_api.models.whatsapp_single200_response import WhatsappSingle200Response
 from bsg_api.rest import ApiException
 from pprint import pprint
 
@@ -67,7 +67,7 @@ with bsg_api.ApiClient(configuration) as api_client:
 
 ### Return type
 
-[**WhatsappSingle200Response**](WhatsappSingle200Response.md)
+[**MessageResponse**](MessageResponse.md)
 
 ### Authorization
 

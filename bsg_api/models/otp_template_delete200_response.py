@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from bsg_api.models.otp_template_delete200_response_data import OtpTemplateDelete200ResponseData
+from bsg_api.models.otp_template_delete_response_data import OtpTemplateDeleteResponseData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class OtpTemplateDelete200Response(BaseModel):
     """
     OtpTemplateDelete200Response
     """ # noqa: E501
-    data: OtpTemplateDelete200ResponseData
+    data: OtpTemplateDeleteResponseData
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
@@ -84,7 +84,7 @@ class OtpTemplateDelete200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": OtpTemplateDelete200ResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": OtpTemplateDeleteResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

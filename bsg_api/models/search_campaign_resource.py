@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from bsg_api.models.campaign_schema import CampaignSchema
-from bsg_api.models.search_campaign_resource_meta import SearchCampaignResourceMeta
+from bsg_api.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class SearchCampaignResource(BaseModel):
     SearchCampaignResource
     """ # noqa: E501
     data: Optional[List[CampaignSchema]] = Field(default=None, description="list of campaigns")
-    meta: Optional[SearchCampaignResourceMeta] = None
+    meta: Optional[Meta] = None
     __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class SearchCampaignResource(BaseModel):
 
         _obj = cls.model_validate({
             "data": [CampaignSchema.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": SearchCampaignResourceMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from bsg_api.models.contact_schema import ContactSchema
-from bsg_api.models.contacts_search200_response_meta import ContactsSearch200ResponseMeta
+from bsg_api.models.contacts_search_meta import ContactsSearchMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class ContactsSearch200Response(BaseModel):
     ContactsSearch200Response
     """ # noqa: E501
     data: Optional[List[ContactSchema]] = Field(default=None, description="List of searched contacts")
-    meta: Optional[ContactsSearch200ResponseMeta] = None
+    meta: Optional[ContactsSearchMeta] = None
     __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class ContactsSearch200Response(BaseModel):
 
         _obj = cls.model_validate({
             "data": [ContactSchema.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": ContactsSearch200ResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": ContactsSearchMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

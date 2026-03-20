@@ -5,12 +5,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **text** | **str** |  |  |
 | **sender** | **str** |  |  |
-| **validity_seconds** | **int** | Validity period in seconds. If not set, validity field is used | [optional]  |
-| **validity** | **int** | Validity period in hours | [optional] [default to 72] |
-| **options** | [**ViberOptions**](ViberOptions.md) |  | [optional]  |
-| **check_stop_list** | **bool** |  | [optional] [default to True] |
+| **text** | **str** |  |  |
+| **image_url** | **str** |  | [optional]  |
+| **button_caption** | **str** |  | [optional]  |
+| **link_url** | **str** | Required if button_caption is set | [optional]  |
 
 ## Example
 

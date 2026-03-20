@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List
-from bsg_api.models.get_internal_currencies200_response_data_item import GetInternalCurrencies200ResponseDataItem
+from bsg_api.models.currency_item import CurrencyItem
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class GetInternalCurrencies200Response(BaseModel):
     """
     GetInternalCurrencies200Response
     """ # noqa: E501
-    data: List[GetInternalCurrencies200ResponseDataItem]
+    data: List[CurrencyItem]
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
@@ -88,7 +88,7 @@ class GetInternalCurrencies200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": [GetInternalCurrencies200ResponseDataItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": [CurrencyItem.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

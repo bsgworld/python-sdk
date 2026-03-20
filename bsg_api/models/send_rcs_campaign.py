@@ -37,7 +37,7 @@ class SendRcsCampaign(BaseModel):
     alternative_channel: Optional[AlternativeChannel] = None
     start_at: Optional[datetime] = Field(default=None, description="Start sending the messages at")
     tariff_code: Optional[StrictInt] = Field(default=None, description="Tariff code null by default. Your can pass specified one if you have several. For more information please visit the [account prices](https://app.bsg.world/prices/sms)")
-    validity_seconds: Optional[Annotated[int, Field(le=86400, strict=True, ge=30)]] = Field(default=None, description="Message validity period in seconds. After this period expires, the message will be in **EXPIRED** status or will be redirected to the SMS channel if it was specified in the request")
+    validity_seconds: Optional[Annotated[int, Field(le=86400, strict=True, ge=30)]] = Field(default=None, description="Message validity period in seconds. After this period expires, the message will be in **EXPIRED** status or will be redirected to the SMS channel if it was specified in the request. Incompatible with **validity**")
     validity: Optional[Annotated[int, Field(le=72, strict=True, ge=1)]] = Field(default=72, description="validity time in hours. The default is 72 hours. Integer from 1 to 72")
     add_to_contact_book: Optional[StrictBool] = Field(default=True, description="Specifies whether to add the specified phone number of the message recipient to the contact book")
     check_stop_list: Optional[StrictBool] = Field(default=True, description="Check the recipient’s phone number for being in the stop list.  Possible values:    - true – if the number is found in the stop list, do not send the message  - false – ignore the stop list")

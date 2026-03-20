@@ -7,12 +7,13 @@ All URIs are relative to *https://one-api.bsg.world*
 | [**campaign**](CampaignApi.md#campaign) | **GET** /api/campaigns/{id} | Get campaign info |
 | [**campaign_details**](CampaignApi.md#campaign_details) | **GET** /api/campaigns/{id}/detail | Get campaign details |
 | [**campaign_price**](CampaignApi.md#campaign_price) | **POST** /api/campaigns/price | Calculate campaign price |
+| [**campaign_send**](CampaignApi.md#campaign_send) | **POST** /api/campaigns/send | Send campaign |
 | [**campaign_stop**](CampaignApi.md#campaign_stop) | **PATCH** /api/campaigns/{id}/stop | Cancel campaign |
 | [**campaigns**](CampaignApi.md#campaigns) | **GET** /api/campaigns | List of campaigns |
 
 
 # **campaign**
-> Campaign200Response campaign(id)
+> CampaignResponse campaign(id)
 
 Get campaign info
 
@@ -24,7 +25,7 @@ Retrieve campaign with all it’s properties
 
 ```python
 import bsg_api
-from bsg_api.models.campaign200_response import Campaign200Response
+from bsg_api.models.campaign_response import CampaignResponse
 from bsg_api.rest import ApiException
 from pprint import pprint
 
@@ -70,7 +71,7 @@ with bsg_api.ApiClient(configuration) as api_client:
 
 ### Return type
 
-[**Campaign200Response**](Campaign200Response.md)
+[**CampaignResponse**](CampaignResponse.md)
 
 ### Authorization
 
@@ -247,6 +248,86 @@ with bsg_api.ApiClient(configuration) as api_client:
 | ----------- | ----------- | ---------------- |
 | **200** | Campaign price |  -  |
 | **422** | Error |  -  |
+| **429** | Too many requests |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **campaign_send**
+> CampaignResponse campaign_send(campaign)
+
+Send campaign
+
+The method allows sending a campaign of any type: sms, rcs, whatsapp. The same text to list of phones will sent as single campaign
+
+### Example
+
+* Bearer (JWT) Authentication (ExternalAuth):
+
+```python
+import bsg_api
+from bsg_api.models.campaign import Campaign
+from bsg_api.models.campaign_response import CampaignResponse
+from bsg_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://one-api.bsg.world
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bsg_api.Configuration(
+    host = "https://one-api.bsg.world"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): ExternalAuth
+configuration = bsg_api.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with bsg_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bsg_api.CampaignApi(api_client)
+    campaign = {"channels":["sms"],"recipients":{"phones":[{"number":380661231231}]},"sms":{"sender":"Best Seller","text":"test"}} # Campaign | 
+
+    try:
+        # Send campaign
+        api_response = api_instance.campaign_send(campaign)
+        print("The response of CampaignApi->campaign_send:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CampaignApi->campaign_send: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **campaign** | [**Campaign**](Campaign.md) |  |  |
+
+### Return type
+
+[**CampaignResponse**](CampaignResponse.md)
+
+### Authorization
+
+[ExternalAuth](../README.md#ExternalAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+| ----------- | ----------- | ---------------- |
+| **200** | Campaign info |  -  |
 | **429** | Too many requests |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

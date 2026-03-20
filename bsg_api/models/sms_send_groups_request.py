@@ -37,7 +37,8 @@ class SmsSendGroupsRequest(BaseModel):
     start_at: Optional[datetime] = Field(default=None, description="Start sending the messages at")
     short_links: Optional[List[ShortLink]] = None
     transliterate: Optional[StrictBool] = Field(default=False, description="apply transliteration to sms text if it necessary")
-    __properties: ClassVar[List[str]] = ["groups", "sender", "text", "tariff_code", "validity", "start_at", "short_links", "transliterate"]
+    callback_url: Optional[Any] = Field(default=None, description="Link to get the delivery status of messages. If this parameter is specified in the method, it will take precedence over the value specified in the “Callback URL” field in the Personal Area.")
+    __properties: ClassVar[List[str]] = ["groups", "sender", "text", "tariff_code", "validity", "start_at", "short_links", "transliterate", "callback_url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +86,11 @@ class SmsSendGroupsRequest(BaseModel):
                 if _item_short_links:
                     _items.append(_item_short_links.to_dict())
             _dict['short_links'] = _items
+        # set to None if callback_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.callback_url is None and "callback_url" in self.model_fields_set:
+            _dict['callback_url'] = None
+
         return _dict
 
     @classmethod
@@ -104,7 +110,8 @@ class SmsSendGroupsRequest(BaseModel):
             "validity": obj.get("validity") if obj.get("validity") is not None else 72,
             "start_at": obj.get("start_at"),
             "short_links": [ShortLink.from_dict(_item) for _item in obj["short_links"]] if obj.get("short_links") is not None else None,
-            "transliterate": obj.get("transliterate") if obj.get("transliterate") is not None else False
+            "transliterate": obj.get("transliterate") if obj.get("transliterate") is not None else False,
+            "callback_url": obj.get("callback_url")
         })
         return _obj
 

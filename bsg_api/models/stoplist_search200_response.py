@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from bsg_api.models.stop_list_collection import StopListCollection
-from bsg_api.models.stoplist_search200_response_meta import StoplistSearch200ResponseMeta
+from bsg_api.models.stoplist_search_meta import StoplistSearchMeta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,7 @@ class StoplistSearch200Response(BaseModel):
     StoplistSearch200Response
     """ # noqa: E501
     data: Optional[List[StopListCollection]] = None
-    meta: Optional[StoplistSearch200ResponseMeta] = None
+    meta: Optional[StoplistSearchMeta] = None
     __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class StoplistSearch200Response(BaseModel):
 
         _obj = cls.model_validate({
             "data": [StopListCollection.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
-            "meta": StoplistSearch200ResponseMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+            "meta": StoplistSearchMeta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
         })
         return _obj
 

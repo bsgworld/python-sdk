@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -27,10 +27,18 @@ class SuggestionCall(BaseModel):
     """
     Call when click the button
     """ # noqa: E501
+    type: StrictStr = Field(description="Suggestion type")
     text: Annotated[str, Field(strict=True, max_length=25)] = Field(description="text of the button")
     phone: StrictStr = Field(description="Phone number to call with a click of a button. 9 – 15 characters (the length must take into account the country code and phone number, the phone number is indicated without +). When sending RCS messages to the country of Ukraine, the phone number to call via the button must be a Ukrainian number")
     postback_data: Optional[Annotated[str, Field(strict=True, max_length=25)]] = Field(default=None, description="Extra data to send on callback_url when user click on the button")
-    __properties: ClassVar[List[str]] = ["text", "phone", "postback_data"]
+    __properties: ClassVar[List[str]] = ["type", "text", "phone", "postback_data"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['call']):
+            raise ValueError("must be one of enum values ('call')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +91,7 @@ class SuggestionCall(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "type": obj.get("type"),
             "text": obj.get("text"),
             "phone": obj.get("phone"),
             "postback_data": obj.get("postback_data")

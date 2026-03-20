@@ -13,6 +13,7 @@
 | **start_at** | **datetime** | Start sending the messages at | [optional]  |
 | **short_links** | [**List[ShortLink]**](ShortLink.md) |  | [optional]  |
 | **transliterate** | **bool** | apply transliteration to sms text if it necessary | [optional] [default to False] |
+| **callback_url** | **object** | Link to get the delivery status of messages. If this parameter is specified in the method, it will take precedence over the value specified in the “Callback URL” field in the Personal Area. | [optional]  |
 
 ## Example
 

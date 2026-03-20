@@ -6,7 +6,7 @@ The object contains information for sending a message via an alternative SMS cha
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **sms** | [**Sms**](Sms.md) |  | [optional]  |
+| **sms** | [**SmsAltChannel**](SmsAltChannel.md) |  | [optional]  |
 
 ## Example
 

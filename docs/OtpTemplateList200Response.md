@@ -5,7 +5,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**OtpTemplateList200ResponseData**](OtpTemplateList200ResponseData.md) |  |  |
+| **data** | [**OtpTemplateListResponseData**](OtpTemplateListResponseData.md) |  |  |
 
 ## Example
 

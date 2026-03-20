@@ -17,10 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from bsg_api.models.viber_options import ViberOptions
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,19 +27,31 @@ class Viber(BaseModel):
     """
     Viber
     """ # noqa: E501
-    text: Annotated[str, Field(min_length=1, strict=True, max_length=1000)]
-    sender: Annotated[str, Field(strict=True)]
-    validity_seconds: Optional[Annotated[int, Field(le=86400, strict=True, ge=30)]] = Field(default=None, description="Validity period in seconds. If not set, validity field is used")
-    validity: Optional[Annotated[int, Field(le=72, strict=True, ge=1)]] = Field(default=72, description="Validity period in hours")
-    options: Optional[ViberOptions] = None
-    check_stop_list: Optional[StrictBool] = True
-    __properties: ClassVar[List[str]] = ["text", "sender", "validity_seconds", "validity", "options", "check_stop_list"]
+    sender: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=40)]]
+    text: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=1000)]]
+    image_url: Optional[Annotated[str, Field(strict=True, max_length=255)]] = None
+    button_caption: Optional[Annotated[str, Field(strict=True, max_length=20)]] = None
+    link_url: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Required if button_caption is set")
+    __properties: ClassVar[List[str]] = ["sender", "text", "image_url", "button_caption", "link_url"]
 
-    @field_validator('sender')
-    def sender_validate_regular_expression(cls, value):
+    @field_validator('image_url')
+    def image_url_validate_regular_expression(cls, value):
         """Validates the regular expression"""
-        if not re.match(r"^(\d{1,15}|\+?\d{1,14}|[\x21-\x7E][\x20-\x7E]{0,10})$", value):
-            raise ValueError(r"must validate the regular expression /^(\d{1,15}|\+?\d{1,14}|[\x21-\x7E][\x20-\x7E]{0,10})$/D")
+        if value is None:
+            return value
+
+        if not re.match(r"^(http|https):\/\/([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+(:(\d+))?([-_\/A-Z0-9?=&]*)?(\.jpg|\.png|\.tiff|\.jpeg|\.gif|\.bmp){1}$", value ,re.IGNORECASE):
+            raise ValueError(r"must validate the regular expression /^(http|https):\/\/([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+(:(\d+))?([-_\/A-Z0-9?=&]*)?(\.jpg|\.png|\.tiff|\.jpeg|\.gif|\.bmp){1}$/iD")
+        return value
+
+    @field_validator('link_url')
+    def link_url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^(https?:\/\/)?([\p{L}\d\.-]+)\.([\p{L}\.]{2,50})([\/\w \.-]*)*\/?", value ,re.IGNORECASE ,re.UNICODE):
+            raise ValueError(r"must validate the regular expression /^(https?:\/\/)?([\p{L}\d\.-]+)\.([\p{L}\.]{2,50})([\/\w \.-]*)*\/?/iu")
         return value
 
     model_config = ConfigDict(
@@ -82,9 +93,16 @@ class Viber(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of options
-        if self.options:
-            _dict['options'] = self.options.to_dict()
+        # set to None if sender (nullable) is None
+        # and model_fields_set contains the field
+        if self.sender is None and "sender" in self.model_fields_set:
+            _dict['sender'] = None
+
+        # set to None if text (nullable) is None
+        # and model_fields_set contains the field
+        if self.text is None and "text" in self.model_fields_set:
+            _dict['text'] = None
+
         return _dict
 
     @classmethod
@@ -97,12 +115,11 @@ class Viber(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "text": obj.get("text"),
             "sender": obj.get("sender"),
-            "validity_seconds": obj.get("validity_seconds"),
-            "validity": obj.get("validity") if obj.get("validity") is not None else 72,
-            "options": ViberOptions.from_dict(obj["options"]) if obj.get("options") is not None else None,
-            "check_stop_list": obj.get("check_stop_list") if obj.get("check_stop_list") is not None else True
+            "text": obj.get("text"),
+            "image_url": obj.get("image_url"),
+            "button_caption": obj.get("button_caption"),
+            "link_url": obj.get("link_url")
         })
         return _obj
 

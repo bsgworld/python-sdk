@@ -20,19 +20,20 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from bsg_api.models.short_link import ShortLink
 from typing import Optional, Set
 from typing_extensions import Self
 
 class Sms(BaseModel):
     """
-    The object contains information about the message for alternative delivery via SMS
+    Sms
     """ # noqa: E501
+    sender: StrictStr = Field(description="Sender’s name: from 3 to 11 characters for the sender’s alphanumeric name (Latin letters, symbols, numbers, spaces); 3 to 15 characters for the sender’s numeric name. To setup senders visit the [account](https://app.bsg.world/sms/senders)")
     text: Annotated[str, Field(strict=True, max_length=765)] = Field(description="SMS text, max length is 765 chars for GSM 7-bit encoding (Latin), and 355 for UCS-2")
-    sender: StrictStr = Field(description="Sender name.   Up to 11 Latin letters or digits, up to 15 – only digits. To setup senders visit the [account](https://app.bsg.world/sms/senders) or use [sender api](#tag/Senders)")
-    validity_seconds: Optional[Annotated[int, Field(le=86400, strict=True, ge=30)]] = Field(default=None, description="Validity period in seconds. If not set, validity field is used")
-    validity: Optional[Annotated[int, Field(le=72, strict=True, ge=1)]] = Field(default=72, description="validity time in hours. The default is 72 hours. Integer from 1 to 72")
-    check_stop_list: Optional[StrictBool] = True
-    __properties: ClassVar[List[str]] = ["text", "sender", "validity_seconds", "validity", "check_stop_list"]
+    unsubscribe_caption: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="Caption before unsubscribe link. Space between caption and link is required.")
+    transliterate: Optional[StrictBool] = Field(default=False, description="apply transliteration to sms text if it necessary")
+    short_links: Optional[List[ShortLink]] = Field(default=None, description="$shortLinks")
+    __properties: ClassVar[List[str]] = ["sender", "text", "unsubscribe_caption", "transliterate", "short_links"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -73,11 +74,13 @@ class Sms(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if validity_seconds (nullable) is None
-        # and model_fields_set contains the field
-        if self.validity_seconds is None and "validity_seconds" in self.model_fields_set:
-            _dict['validity_seconds'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in short_links (list)
+        _items = []
+        if self.short_links:
+            for _item_short_links in self.short_links:
+                if _item_short_links:
+                    _items.append(_item_short_links.to_dict())
+            _dict['short_links'] = _items
         return _dict
 
     @classmethod
@@ -90,11 +93,11 @@ class Sms(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "text": obj.get("text"),
             "sender": obj.get("sender"),
-            "validity_seconds": obj.get("validity_seconds"),
-            "validity": obj.get("validity") if obj.get("validity") is not None else 72,
-            "check_stop_list": obj.get("check_stop_list") if obj.get("check_stop_list") is not None else True
+            "text": obj.get("text"),
+            "unsubscribe_caption": obj.get("unsubscribe_caption"),
+            "transliterate": obj.get("transliterate") if obj.get("transliterate") is not None else False,
+            "short_links": [ShortLink.from_dict(_item) for _item in obj["short_links"]] if obj.get("short_links") is not None else None
         })
         return _obj
 

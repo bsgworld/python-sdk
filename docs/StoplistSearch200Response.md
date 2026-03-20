@@ -6,7 +6,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **data** | [**List[StopListCollection]**](StopListCollection.md) |  | [optional]  |
-| **meta** | [**StoplistSearch200ResponseMeta**](StoplistSearch200ResponseMeta.md) |  | [optional]  |
+| **meta** | [**StoplistSearchMeta**](StoplistSearchMeta.md) |  | [optional]  |
 
 ## Example
 

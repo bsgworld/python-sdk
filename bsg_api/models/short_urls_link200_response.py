@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from bsg_api.models.short_urls_link200_response_data import ShortUrlsLink200ResponseData
+from bsg_api.models.short_urls_link_statistic_data import ShortUrlsLinkStatisticData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class ShortUrlsLink200Response(BaseModel):
     """
     ShortUrlsLink200Response
     """ # noqa: E501
-    data: Optional[ShortUrlsLink200ResponseData] = None
+    data: Optional[ShortUrlsLinkStatisticData] = None
     __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
@@ -84,7 +84,7 @@ class ShortUrlsLink200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": ShortUrlsLink200ResponseData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": ShortUrlsLinkStatisticData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 
